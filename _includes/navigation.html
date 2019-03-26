@@ -1,0 +1,7 @@
+<nav>
+ {% for item in site.pages %}
+  {% if page.url == item.url %}<b>{% endif %}
+   <a href="{{ item.url }}">[{{ item.name | parse_title }}]</a>
+  {% if page.url == item.url %}</b>{% endif %}
+ {% endfor %}
+</nav>
