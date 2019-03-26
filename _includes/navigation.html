@@ -1,7 +1,13 @@
 <nav>
  {% for item in site.pages %}
-  {% if page.url == item.url %}<b>{% endif %}
-   <a href="{{ item.url }}">[{{ item.name | parse_title }}]</a>
-  {% if page.url == item.url %}</b>{% endif %}
+  <!-- The test below is not working at all.. :( -->
+  {% if (item.name | slice: -3, 3) == ".md" %}
+  [[is md: {{ item.name }} // {{ (item.name|slice: -3, 3) == ".md" }}]]
+  {% endif %}
+  {% if (item.name | slice: -3, 3) == ".md" %}
+   {% if page.url == item.url %}<b>{% endif %}
+    <a href="{{ item.url }}">[{{ item.name | parse_title }}]</a>
+   {% if page.url == item.url %}</b>{% endif %}
+  {% endif %}
  {% endfor %}
 </nav>
